@@ -12,3 +12,109 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+@keyframes pointer-menu {
+  from {
+    left: -19px;
+  }
+  to {
+    left: -15px;
+  }
+} 
+
+/* сердце */
+.sparks {
+  opacity: 0%;
+}
+
+/* сердцевина */
+/* когда курсор уходит - задержка в 0.03s, ведь нужно дождаться, когда потухнет основное тело */
+.core {
+  fill: transparent;
+  transition: fill 0.3s 0.03s linear;
+}
+
+.like-icon:hover .core{
+  fill: var(--accent-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .core{
+  fill: var(--sparks-color);
+  transition: fill 0.3s linear;
+}
+
+
+/* основное тело сердца */
+/* когда курсор уходит с сердца, основное тело, наоборот, становится прозрачным без задержек */
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--accent-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+/* клик по иконке */
+/* Закрашивается сердцевина */
+ .like-icon.is-liked .core{
+  fill: var(--sparks-color);
+  transition: fill 0.3s linear;
+ }
+
+/* С небольшой задержкой закрашивается основное тело */
+.like-icon.is-liked .main-body{
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.05s linear;
+ }
+
+/* Еще с большей задержкой закрашивается контур */
+.like-icon.is-liked .contour{
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.06s linear;
+ }
+
+
+
+/* небольшое масштабирование сердца и возврат к исходному масштабу */
+/* Запуск анимации на всей группе элементов .heart через 0.1s после появления класса is-liked в разметке */
+.like-icon.is-liked .heart {
+  animation: scale-heart 0.3s 0.1s ease-in alternate;
+  transform-origin: center;
+ }
+
+@keyframes scale-heart {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.5;
+  }
+}
+
+/* Становятся видимыми и пропадают искры */
+.like-icon.is-liked .sparks {
+  animation: opacity-heart 0.3s 0.3s ease-in alternate;
+ }
+
+ @keyframes opacity-heart {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* перекрашивание контура обратно, когда сердечко выключат */
+.contour {
+  fill: var(--contour-color);
+  transition: fill 0.1s linear;
+}
