@@ -19,7 +19,7 @@
   align-items: center;
   padding-block: 100px 103px;
   color: var(--text-color);
-  font-family: var(--main-font), sans-serif;
+  font-family: var(--main-font);
   font-style: normal;
   background-color: var(--bg-color);
   background-image: 
@@ -76,6 +76,8 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  padding-inline-start: 20px;
+  padding-block-start: 5px;
 }
 
 .theme-menu__button {
@@ -136,7 +138,7 @@
 }
 
 .post__title {
-  padding-inline-start: 10px;
+  padding-inline: 10px;
   padding-block: 5px;
   font-size: var(--title-font-size);
   font-style: normal;
@@ -263,7 +265,6 @@
 .button__text {
   position: relative;
   z-index: 2;
-  padding-block: 11px;
   color: var(--button-bg-color);
   font-family: var(--accent-font);
   font-size: var(--text-font-size);
@@ -292,6 +293,12 @@
 
 .footer__floppy-img {
   width: 21px;
+}
+
+@media (width <= 375px) {
+  .footer__floppy-img {
+    width: 28px;
+  }
 }
 
 .dialog {
